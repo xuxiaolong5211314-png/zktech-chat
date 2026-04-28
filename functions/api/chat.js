@@ -1,6 +1,4 @@
-export async function onRequestPost(context) {
-  const { request } = context;
-  
+export async function onRequestPost({ request }) {
   try {
     const body = await request.json();
     
@@ -31,4 +29,14 @@ export async function onRequestPost(context) {
       }
     });
   }
+}
+
+export async function onRequestOptions() {
+  return new Response(null, {
+    headers: {
+      'Access-Control-Allow-Origin': '*',
+      'Access-Control-Allow-Methods': 'POST, OPTIONS',
+      'Access-Control-Allow-Headers': 'Content-Type, Authorization',
+    }
+  });
 }
