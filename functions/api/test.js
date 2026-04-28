@@ -1,4 +1,4 @@
-export async function onRequestPost(context) {
+export async function onRequestPost() {
   try {
     const response = await fetch('https://api.longcat.chat/openai/v1/chat/completions', {
       method: 'POST',
@@ -38,4 +38,14 @@ export async function onRequestPost(context) {
       }
     });
   }
+}
+
+export async function onRequestOptions() {
+  return new Response(null, {
+    headers: {
+      'Access-Control-Allow-Origin': '*',
+      'Access-Control-Allow-Methods': 'POST, OPTIONS',
+      'Access-Control-Allow-Headers': 'Content-Type, Authorization',
+    }
+  });
 }
